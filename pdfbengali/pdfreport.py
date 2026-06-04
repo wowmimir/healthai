@@ -1,15 +1,14 @@
 import asyncio
 import markdown
-import os
 from playwright.async_api import async_playwright
 
 # =========================
 # FILES
 # =========================
 
-INPUT_MD = "outputs/prescription.md"
-OUTPUT_HTML = "outputs/prescription.html"
-OUTPUT_PDF = "outputs/prescription.pdf"
+INPUT_MD = "outputs/report_translated.md"
+OUTPUT_HTML = "outputs/report_translated.html"
+OUTPUT_PDF = "outputs/report_translated.pdf"
 
 # =========================
 # READ MARKDOWN
@@ -37,98 +36,61 @@ html_body = markdown.markdown(
 
 full_html = f"""
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
-<title>Patient Prescription</title>
 
 <style>
 
+@font-face {{
+    font-family: 'Noto Bengali';
+    src: url('fonts/NotoSansBengali-Regular.ttf') format('truetype');
+}}
+
 body {{
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Noto Bengali', sans-serif;
     margin: 40px;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #222;
     font-size: 14px;
 }}
 
 h1 {{
-    border-bottom: 2px solid #2c3e50;
+    border-bottom: 2px solid black;
     padding-bottom: 10px;
-    color: #2c3e50;
-    font-size: 24px;
 }}
 
 h2 {{
     margin-top: 30px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
-    color: #34495e;
-    font-size: 20px;
-}}
-
-h3 {{
-    color: #555;
-    font-size: 18px;
-    margin-top: 20px;
 }}
 
 table {{
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    margin-bottom: 20px;
 }}
 
 th, td {{
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     padding: 10px;
     text-align: left;
 }}
 
 th {{
-    background-color: #f5f5f5;
-    font-weight: bold;
-}}
-
-tr:nth-child(even) {{
-    background-color: #f9f9f9;
+    background-color: #f2f2f2;
 }}
 
 code {{
     background: #f4f4f4;
     padding: 2px 5px;
-    border-radius: 3px;
-    font-family: 'Courier New', monospace;
 }}
 
 pre {{
     background: #f4f4f4;
     padding: 10px;
     overflow-x: auto;
-    border-radius: 5px;
-}}
-
-blockquote {{
-    border-left: 4px solid #ccc;
-    margin: 20px 0;
-    padding-left: 20px;
-    color: #666;
-}}
-
-ul, ol {{
-    margin: 10px 0;
-    padding-left: 25px;
-}}
-
-hr {{
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-}}
-
-strong {{
-    color: #2c3e50;
 }}
 
 </style>
@@ -146,28 +108,28 @@ strong {{
 # SAVE HTML
 # =========================
 
-os.makedirs("outputs", exist_ok=True)
-
 with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print(f"HTML generated: {OUTPUT_HTML}")
+print("HTML generated.")
 
 # =========================
 # HTML -> PDF USING CHROME
 # =========================
 
 async def generate_pdf():
+
     async with async_playwright() as p:
+
         browser = await p.chromium.launch()
+
         page = await browser.new_page()
-        
-        abs_path = os.path.abspath(OUTPUT_HTML)
+
         await page.goto(
-            f"file://{abs_path}",
+            f"file:///{OUTPUT_HTML}",
             wait_until="networkidle"
         )
-        
+
         await page.pdf(
             path=OUTPUT_PDF,
             format="A4",
@@ -179,9 +141,9 @@ async def generate_pdf():
                 "right": "15mm"
             }
         )
-        
+
         await browser.close()
 
 asyncio.run(generate_pdf())
 
-print(f"PDF generated successfully: {OUTPUT_PDF}")
+print("PDF generated successfully.")
