@@ -1,0 +1,17 @@
+requests
+re
+google-genai
+pydantic
+pymupdf
+langgraph
+langchain-ollama
+langchain
+markdown
+playwright
+reportlab
+chromium
+docling
+pypdf
+torch
+torchvision
+torchaudio
