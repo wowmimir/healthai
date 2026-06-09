@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 40px;
+    line-height: 1.6;
+    color: #2d3748;
+    font-size: 14px;
+}
+h1 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; font-size: 24px; margin-bottom: 15px; }
+h2 { margin-top: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; color: #34495e; font-size: 19px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+th, td { border: 1px solid #e2e8f0; padding: 10px; text-align: left; }
+th { background-color: #f7fafc; font-weight: bold; color: #4a5568; }
+tr:nth-child(even) { background-color: #f8fafc; }
+blockquote { border-left: 4px solid #cbd5e0; margin: 15px 0; padding-left: 15px; color: #4a5568; font-style: italic; }
+ul, ol { margin: 10px 0; padding-left: 20px; }
+
+.status-out-of-range { color: #e53e3e; font-weight: bold; }
+.status-borderline { color: #dd6b20; font-weight: bold; }
+.status-good { color: #38a169; font-weight: bold; }
+
+/* Infographic Layout Card with zero upper padding gap */
+.infographic-container {
+    max-width: 440px;
+    margin: 10px auto 20px auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    padding: 24px;
+    page-break-inside: avoid;
+}
+.infographic-header {
+    text-align: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: #1e3a8a;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+.gauge-box {
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+.gauge-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Crisp Embedded SVG Vector Typography Styles */
+.svg-score-num {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    fill: #2f855a;
+}
+.svg-score-label {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 5.5px;
+    font-weight: 800;
+    fill: #38a169;
+    letter-spacing: 0.5px;
+}
+.svg-score-sub {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 3.8px;
+    font-weight: 500;
+    fill: #718096;
+}
+
+.factors-title {
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+.factor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #f7fafc;
+}
+.factor-row:last-child {
+    border-bottom: none;
+}
+.factor-name {
+    flex: 1;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 13px;
+}
+.factor-status {
+    width: 90px;
+    text-align: right;
+    font-size: 12px;
+}
+.factor-score {
+    width: 65px;
+    text-align: right;
+    font-weight: 700;
+    color: #4a5568;
+    font-size: 13px;
+}
+</style>
+</head>
+<body>
+<h1>Health Report Summary</h1>
+<p><strong>Patient:</strong> Mr RAJORSHI SEAL<br />
+<strong>Age:</strong> 54<br />
+<strong>Gender:</strong> Male<br />
+<strong>Patient ID:</strong> 16370278</p>
+<h2>Health Score</h2>
+<p><strong>78/100</strong> — Good</p>
+<blockquote>
+<p>Overall, most parameters are within normal ranges, indicating good general health. The Cardiac Health and Iron profiles may affect energy levels, while the Vitamins and Minerals profile suggests room for nutritional improvement. Consider incorporating a variety of fruits, vegetables, and balanced meals into your diet, along with regular physical activity such as walking or yoga. Routine check-ups can help maintain your well-being, and please consult a healthcare professional if you notice any new or concerning symptoms. Remember, small lifestyle changes can lead to meaningful health benefits.</p>
+</blockquote>
+
+<div class="infographic-container">
+    <div class="infographic-header">HEALTH SCORE BOARD</div>
+    
+    <div class="gauge-box">
+        <svg viewBox="0 0 100 62" class="gauge-svg">
+            <defs>
+                <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#3498db" />
+                    <stop offset="60%" stop-color="#2ecc71" />
+                    <stop offset="100%" stop-color="#1abc9c" />
+                </linearGradient>
+            </defs>
+            <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="#edf2f7" stroke-width="8" stroke-linecap="round" />
+            <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="url(#gauge-gradient)" stroke-width="8" 
+                  stroke-linecap="round" stroke-dasharray="85.8 110" />
+            
+            <text x="50" y="38" text-anchor="middle" class="svg-score-num">78</text>
+            <text x="50" y="48" text-anchor="middle" class="svg-score-label">GOOD</text>
+            <text x="50" y="56" text-anchor="middle" class="svg-score-sub">Parameters within healthy limits</text>
+        </svg>
+    </div>
+    
+    <div class="factors-title">SCORE FACTORS BY SYSTEM</div>
+    <div class="factors-list">
+        
+    <div class="factor-row">
+        <span class="factor-name">Cardiac Profile</span>
+        <span class="factor-status status-out-of-range">Average</span>
+        <span class="factor-score">55/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Blood Disorder</span>
+        <span class="factor-status status-out-of-range">Average</span>
+        <span class="factor-score">93/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Iron</span>
+        <span class="factor-status status-out-of-range">Average</span>
+        <span class="factor-score">75/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Vitamin Profile</span>
+        <span class="factor-status status-out-of-range">Average</span>
+        <span class="factor-score">50/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Infectious Diseases</span>
+        <span class="factor-status status-good">Excellent</span>
+        <span class="factor-score">100/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Anemia Studies</span>
+        <span class="factor-status status-borderline">Good</span>
+        <span class="factor-score">87/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Inflammation</span>
+        <span class="factor-status status-good">Excellent</span>
+        <span class="factor-score">100/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Diabetes Monitoring</span>
+        <span class="factor-status status-borderline">Good</span>
+        <span class="factor-score">66/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Liver Profile</span>
+        <span class="factor-status status-borderline">Good</span>
+        <span class="factor-score">91/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Kidney Profile</span>
+        <span class="factor-status status-good">Excellent</span>
+        <span class="factor-score">100/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Electrolytes</span>
+        <span class="factor-status status-good">Excellent</span>
+        <span class="factor-score">100/100</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">Thyroid Profile</span>
+        <span class="factor-status status-good">Excellent</span>
+        <span class="factor-score">100/100</span>
+    </div>
+    
+    </div>
+</div>
+
+<h2>Summary of Key Health Indicators</h2>
+<ul>
+<li><strong>Total Parameters Tested:</strong> 74</li>
+<li><strong>Borderline Results:</strong> 5</li>
+<li><strong>Out Of Range Results:</strong> 5</li>
+</ul>
+<h2>Tests That Need Attention</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Test</th>
+<th>Value</th>
+<th>Status</th>
+<th>Panel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Basophils.</td>
+<td>0.01 10^3/µl</td>
+<td>Out Of Range</td>
+<td>Blood Disorder</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Vitamin D25 - Hydroxy</td>
+<td>17.7 ng/mL</td>
+<td>Out Of Range</td>
+<td>Vitamin Profile</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Triglycerides</td>
+<td>198 mg/dL</td>
+<td>Out Of Range</td>
+<td>Cardiac Profile</td>
+</tr>
+<tr>
+<td>4</td>
+<td>V.L.D.L Cholesterol</td>
+<td>39.6 mg/dL</td>
+<td>Out Of Range</td>
+<td>Cardiac Profile</td>
+</tr>
+<tr>
+<td>5</td>
+<td>UIBC</td>
+<td>309 µg/dL</td>
+<td>Out Of Range</td>
+<td>Iron</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Non HDL Cholesterol</td>
+<td>141.3 mg/dL</td>
+<td>Out Of Range</td>
+<td>Cardiac Profile</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Glycosylated Hemoglobin (HbA1c)</td>
+<td>5.9 %</td>
+<td>Out Of Range</td>
+<td>Diabetes Monitoring</td>
+</tr>
+<tr>
+<td>8</td>
+<td>RDW-SD</td>
+<td>51.8 fl</td>
+<td>Borderline</td>
+<td>Anemia Studies</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Gamma Glutamyl Transferase (GGT)</td>
+<td>11.2 U/L</td>
+<td>Borderline</td>
+<td>Liver Profile</td>
+</tr>
+<tr>
+<td>10</td>
+<td>LDL Cholesterol</td>
+<td>101.7 mg/dL</td>
+<td>Borderline</td>
+<td>Cardiac Profile</td>
+</tr>
+</tbody>
+</table>
+<h2>Health Status by Body System</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Total</th>
+<th>Borderline</th>
+<th>Out of Range</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cardiac Profile</td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>Out of Range</td>
+</tr>
+<tr>
+<td>Blood Disorder</td>
+<td>16</td>
+<td>0</td>
+<td>1</td>
+<td>Out of Range</td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>Out of Range</td>
+</tr>
+<tr>
+<td>Vitamin Profile</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>Out of Range</td>
+</tr>
+<tr>
+<td>Infectious Diseases</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>All In Range</td>
+</tr>
+<tr>
+<td>Anemia Studies</td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+<td>Borderline</td>
+</tr>
+<tr>
+<td>Inflammation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>All In Range</td>
+</tr>
+<tr>
+<td>Diabetes Monitoring</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>Borderline</td>
+</tr>
+<tr>
+<td>Liver Profile</td>
+<td>12</td>
+<td>1</td>
+<td>0</td>
+<td>Borderline</td>
+</tr>
+<tr>
+<td>Kidney Profile</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>All In Range</td>
+</tr>
+<tr>
+<td>Electrolytes</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>All In Range</td>
+</tr>
+<tr>
+<td>Thyroid Profile</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>All In Range</td>
+</tr>
+</tbody>
+</table>
+<h2>Personalized Health Advisory</h2>
+<h3>Diabetes</h3>
+<p><strong>Glycosylated Hemoglobin (HbA1c):</strong> 5.9 % — Borderline</p>
+<p>This panel is used to check how much glucose/sugar there is in your blood. Too much blood glucose might indicate diabetes.</p>
+<h3>Liver Profile</h3>
+<p><strong>Gamma Glutamyl Transferase (GGT):</strong> 11.2 U/L — Borderline</p>
+<p>One of the main functions of your liver is to make proteins that are secreted in your blood. It also makes enzymes which convert food into energy, and processes old muscles and cells. When your liver is damaged, enzymes leak into your blood and appear in the blood test</p>
+<h3>Cardiac Profile</h3>
+<p><strong>Triglycerides:</strong> 198 mg/dL — Out Of Range</p>
+<p>Most people believe they are safe from heart diseases, but in reality, heart diseases are the leading cause of death in the world. There are many different forms of heart disease. Narrowing or blockage of the coronary arteries is the most common cause of heart disease, which are the vessels that supply blood to the heart. This is called coronary artery disease and it occurs slowly over time. It is the main cause of heart attacks.</p>
+<h3>Cardiac Profile</h3>
+<p><strong>LDL Cholesterol:</strong> 101.7 mg/dL — Borderline</p>
+<p>Most people believe they are safe from heart diseases, but in reality, heart diseases are the leading cause of death in the world. There are many different forms of heart disease. Narrowing or blockage of the coronary arteries is the most common cause of heart disease, which are the vessels that supply blood to the heart. This is called coronary artery disease and it occurs slowly over time. It is the main cause of heart attacks.</p>
+<h3>Vitamins Profile</h3>
+<p><strong>Vitamin D25 - Hydroxy:</strong> 17.7 ng/mL — Out Of Range</p>
+<p>Vitamins are considered essential nutrients because they perform hundreds of roles in your body. They help maintain bones, heal wounds, and strengthen your immune system. They also convert food into energy, and repair cellular damage</p>
+<h2>AI-Generated Summary</h2>
+<h3>Overall Assessment</h3>
+<p>Your overall health score is 78 out of 100, which means your body is mostly working well. However, a few of your test values are slightly higher or lower than normal, which your doctor can help you manage. Most of these issues are common and can often be improved with simple lifestyle changes.</p>
+<h3>Critical Findings</h3>
+<ul>
+<li>Your Vitamin D level is quite low (17.7 ng/mL), which means your body is not getting enough Vitamin D. This can make you feel tired, cause bone pain, or weaken your bones over time.</li>
+<li>Your blood fat levels (Triglycerides and VLDL Cholesterol) are higher than normal, which means there is extra fat in your blood. This can put extra pressure on your heart if not managed.</li>
+<li>Your HbA1c level (5.9%) is slightly above normal, which means your blood sugar is a little high. This can be an early warning sign of sugar-related problems (prediabetes) if not taken care of.</li>
+<li>Your Basophil count (a type of white blood cell that helps fight infections) is very low. This may sometimes happen but should be checked by your doctor.</li>
+<li>Your Non-HDL Cholesterol (the 'bad' cholesterol in your blood) is slightly higher than ideal, which is not good for your heart.</li>
+</ul>
+<h3>Positive Findings</h3>
+<ul>
+<li>Your health score of 78/100 is in the 'Good' range, meaning most of your body functions are working properly.</li>
+<li>Your blood sugar level, although slightly raised, is still close to normal and can be controlled with care.</li>
+<li>Many of your other test values are not flagged, which means your liver, kidney, and other organs are working within healthy limits.</li>
+</ul>
+<h3>Recommendations</h3>
+<ul>
+<li>Try to spend about 15–20 minutes in morning sunlight every day, as sunlight helps your body make Vitamin D naturally. Eating foods like fish, eggs, and milk can also help.</li>
+<li>Reduce eating oily, fried, and sugary foods. Include more fresh vegetables, fruits, whole grains, and lentils in your daily meals to help control your blood fat and sugar levels.</li>
+<li>Walk for at least 30 minutes a day or do light physical activity like cycling, farming, or yoga. Regular movement helps lower bad cholesterol and blood sugar.</li>
+<li>Limit alcohol, stop smoking (if you do), and drink enough water through the day to keep your body healthy.</li>
+<li>Please visit your doctor soon to discuss these test results. Your doctor may suggest Vitamin D supplements or further tests to make sure everything is fine.</li>
+</ul>
+<h3>About Your Health Score</h3>
+<p>Your score of 78 out of 100 means your health is currently good, but not perfect. The 22 points you lost are mainly because of low Vitamin D, slightly high blood fats, and mildly raised blood sugar. The good news is that these are common problems that many people face and they can often be improved with proper food, sunlight, exercise, and your doctor's guidance.</p>
+<hr />
+<p><em>This summary is generated by an AI system for informational purposes only. Please consult a qualified healthcare professional for medical advice, diagnosis, or treatment.</em></p>
+</body>
+</html>

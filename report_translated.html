@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<style>
+@font-face {
+    font-family: 'Noto Bengali';
+    src: url('fonts/NotoSansBengali-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Noto Bengali', sans-serif;
+    margin: 40px;
+    line-height: 1.8;
+    color: #2d3748;
+    font-size: 14px;
+}
+h1 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; font-size: 24px; margin-bottom: 15px; }
+h2 { margin-top: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; color: #34495e; font-size: 19px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+th, td { border: 1px solid #e2e8f0; padding: 10px; text-align: left; }
+th { background-color: #f7fafc; font-weight: bold; color: #4a5568; }
+tr:nth-child(even) { background-color: #f8fafc; }
+blockquote { border-left: 4px solid #cbd5e0; margin: 15px 0; padding-left: 15px; color: #4a5568; font-style: italic; }
+ul, ol { margin: 10px 0; padding-left: 20px; }
+
+.status-out-of-range { color: #e53e3e; font-weight: bold; }
+.status-borderline { color: #dd6b20; font-weight: bold; }
+.status-good { color: #38a169; font-weight: bold; }
+
+/* ইনফোগ্রাফিক লেআউট বক্স (কোনো আপার গ্যাপ বা স্পেসিং ত্রুটি নেই) */
+.infographic-container {
+    max-width: 440px;
+    margin: 10px auto 25px auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    padding: 24px;
+    page-break-inside: avoid;
+}
+.infographic-header {
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: #1e3a8a;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+.gauge-box {
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+.gauge-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* সুনির্দিষ্ট ভেক্টর টাইপোগ্রাফি স্টাইল */
+.svg-score-num {
+    font-family: 'Noto Bengali', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    fill: #2f855a;
+}
+.svg-score-base {
+    font-family: 'Noto Bengali', sans-serif;
+    font-size: 5px;
+    font-weight: 700;
+    fill: #718096;
+}
+.svg-score-label {
+    font-family: 'Noto Bengali', sans-serif;
+    font-size: 5.5px;
+    font-weight: 800;
+    fill: #38a169;
+    letter-spacing: 0.5px;
+}
+.svg-score-sub {
+    font-family: 'Noto Bengali', sans-serif;
+    font-size: 3.8px;
+    font-weight: 500;
+    fill: #718096;
+}
+
+.factors-title {
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+.factor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #f7fafc;
+}
+.factor-row:last-child {
+    border-bottom: none;
+}
+.factor-name {
+    flex: 1;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 13px;
+}
+.factor-status {
+    width: 90px;
+    text-align: right;
+    font-size: 12px;
+}
+.factor-score {
+    width: 65px;
+    text-align: right;
+    font-weight: 700;
+    color: #4a5568;
+    font-size: 13px;
+}
+</style>
+</head>
+<body>
+<h1>মেডিকেল রিপোর্ট সারসংক্ষেপ</h1>
+<h2>রোগীর তথ্য</h2>
+<ul>
+<li><strong>নাম:</strong> Mr RAJORSHI SEAL</li>
+<li><strong>বয়স:</strong> 54</li>
+<li><strong>লিঙ্গ:</strong> পুরুষ</li>
+<li><strong>রোগী আইডি:</strong> 16370278</li>
+</ul>
+<h2>স্বাস্থ্য স্কোর</h2>
+<p><strong>৭৮/১০০</strong> — ভাল</p>
+<blockquote>
+<p>১০০ এর মধ্যে আপনার ৭৮ স্কোরের অর্থ হলো আপনার স্বাস্থ্য বর্তমানে ভালো, কিন্তু নিখুঁত নয়। আপনার যে ২২ পয়েন্ট কমেছে, তার প্রধান কারণ হলো ভিটামিন ডি-এর স্বল্পতা, রক্তে চর্বির পরিমাণ সামান্য বেশি এবং রক্তে শর্করার মাত্রা হালকা বেড়ে যাওয়া। সুখবর হলো, এগুলো সাধারণ সমস্যা যা অনেকেই ভোগেন এবং সঠিক খাবার, সূর্যালোক, ব্যায়াম ও আপনার ডাক্তারের পরামর্শের মাধ্যমে প্রায়শই এগুলোর উন্নতি করা সম্ভব।</p>
+</blockquote>
+
+<div class="infographic-container">
+    <div class="infographic-header">হেলথ স্কোর বোর্ড</div>
+    
+    <div class="gauge-box">
+        <svg viewBox="0 0 100 64" class="gauge-svg">
+            <defs>
+                <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#3498db" />
+                    <stop offset="60%" stop-color="#2ecc71" />
+                    <stop offset="100%" stop-color="#1abc9c" />
+                </linearGradient>
+            </defs>
+            <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="#edf2f7" stroke-width="8" stroke-linecap="round" />
+            <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="url(#gauge-gradient)" stroke-width="8" 
+                  stroke-linecap="round" stroke-dasharray="85.8 110" />
+            
+            <text x="50" y="35" text-anchor="middle" class="svg-score-num">৭৮</text>
+            <text x="50" y="43" text-anchor="middle" class="svg-score-base">/১০০</text>
+            <text x="50" y="50" text-anchor="middle" class="svg-score-label">ভালো</text>
+            <text x="50" y="58" text-anchor="middle" class="svg-score-sub">প্যারামিটার গুলি সীমার মধ্যে রয়েছে</text>
+        </svg>
+    </div>
+    
+    <div class="factors-title">বডি সিস্টেম অনুযায়ী স্কোরের কারণ</div>
+    <div class="factors-list">
+        
+    <div class="factor-row">
+        <span class="factor-name">হৃদযন্ত্র</span>
+        <span class="factor-status status-out-of-range">মাঝামাঝি</span>
+        <span class="factor-score">৫৫/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">রক্তের ব্যাধি</span>
+        <span class="factor-status status-out-of-range">মাঝামাঝি</span>
+        <span class="factor-score">৯৩/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">আয়রন</span>
+        <span class="factor-status status-out-of-range">মাঝামাঝি</span>
+        <span class="factor-score">৭৫/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">ভিটামিন</span>
+        <span class="factor-status status-out-of-range">মাঝামাঝি</span>
+        <span class="factor-score">৫০/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">সংক্রামক রোগ</span>
+        <span class="factor-status status-good">অসাধারণ</span>
+        <span class="factor-score">১০০/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">রক্তস্বল্পতা</span>
+        <span class="factor-status status-borderline">ভালো</span>
+        <span class="factor-score">৮৭/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">প্রদাহ</span>
+        <span class="factor-status status-good">অসাধারণ</span>
+        <span class="factor-score">১০০/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">ডায়াবেটিস পর্যবেক্ষণ</span>
+        <span class="factor-status status-borderline">ভালো</span>
+        <span class="factor-score">৬৬/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">যকৃত</span>
+        <span class="factor-status status-borderline">ভালো</span>
+        <span class="factor-score">৯১/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">কিডনি</span>
+        <span class="factor-status status-good">অসাধারণ</span>
+        <span class="factor-score">১০০/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">ইলেক্ট্রোলাইট</span>
+        <span class="factor-status status-good">অসাধারণ</span>
+        <span class="factor-score">১০০/১০০</span>
+    </div>
+    
+    <div class="factor-row">
+        <span class="factor-name">থাইরয়েড</span>
+        <span class="factor-status status-good">অসাধারণ</span>
+        <span class="factor-score">১০০/১০০</span>
+    </div>
+    
+    </div>
+</div>
+
+<h2>মূল স্বাস্থ্য সূচকের সারাংশ</h2>
+<ul>
+<li><strong>মোট পরীক্ষিত প্যারামিটার:</strong> 74</li>
+<li><strong>সীমারেখার ফলাফল:</strong> 5</li>
+<li><strong>স্বাভাবিক সীমার বাইরের ফলাফল:</strong> 5</li>
+</ul>
+<h2>যে পরীক্ষাগুলো মনোযোগ প্রয়োজন</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>পরীক্ষা</th>
+<th>মান</th>
+<th>অবস্থা</th>
+<th>প্যানেল</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>বেসোফিলস</td>
+<td>0.01 10^3/µl</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>রক্তের ব্যাধি</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ভিটামিন ডি২৫-হাইড্রক্সি</td>
+<td>17.7 ng/mL</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>ভিটামিন</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ট্রাইগ্লিসারাইড</td>
+<td>198 mg/dL</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>হৃদযন্ত্র</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ভিএলডিএল কোলেস্টেরল</td>
+<td>39.6 mg/dL</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>হৃদযন্ত্র</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ইউআইবিসি</td>
+<td>309 µg/dL</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>আয়রন</td>
+</tr>
+<tr>
+<td>6</td>
+<td>নন-এইচডিএল কোলেস্টেরল</td>
+<td>141.3 mg/dL</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>হৃদযন্ত্র</td>
+</tr>
+<tr>
+<td>7</td>
+<td>গ্লাইকোসাইলেটেড হিমোগ্লোবিন (এইচবিএ১সি)</td>
+<td>5.9 %</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+<td>ডায়াবেটিস পর্যবেক্ষণ</td>
+</tr>
+<tr>
+<td>8</td>
+<td>আরডিডব্লিউ-এসডি</td>
+<td>51.8 fl</td>
+<td>সীমারেখায়</td>
+<td>রক্তস্বল্পতা</td>
+</tr>
+<tr>
+<td>9</td>
+<td>গামা গ্লুটামাইল ট্রান্সফেরেজ (জিজিটি)</td>
+<td>11.2 U/L</td>
+<td>সীমারেখায়</td>
+<td>যকৃত</td>
+</tr>
+<tr>
+<td>10</td>
+<td>এলডিএল কোলেস্টেরল</td>
+<td>101.7 mg/dL</td>
+<td>সীমারেখায়</td>
+<td>হৃদযন্ত্র</td>
+</tr>
+</tbody>
+</table>
+<h2>শরীরের বিভিন্ন সিস্টেমের স্বাস্থ্যের অবস্থা</h2>
+<table>
+<thead>
+<tr>
+<th>সিস্টেম</th>
+<th>মোট</th>
+<th>সীমারেখায়</th>
+<th>সীমার বাইরে</th>
+<th>অবস্থা</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>হৃদযন্ত্র</td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+</tr>
+<tr>
+<td>রক্তের ব্যাধি</td>
+<td>16</td>
+<td>0</td>
+<td>1</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+</tr>
+<tr>
+<td>আয়রন</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+</tr>
+<tr>
+<td>ভিটামিন</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>স্বাভাবিক সীমার বাইরে</td>
+</tr>
+<tr>
+<td>সংক্রামক রোগ</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>সবকটি স্বাভাবিক</td>
+</tr>
+<tr>
+<td>রক্তস্বল্পতা</td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+<td>সীমারেখায়</td>
+</tr>
+<tr>
+<td>প্রদাহ</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>সবকটি স্বাভাবিক</td>
+</tr>
+<tr>
+<td>ডায়াবেটিস পর্যবেক্ষণ</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>সীমারেখায়</td>
+</tr>
+<tr>
+<td>যকৃত</td>
+<td>12</td>
+<td>1</td>
+<td>0</td>
+<td>সীমারেখায়</td>
+</tr>
+<tr>
+<td>কিডনি</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>সবকটি স্বাভাবিক</td>
+</tr>
+<tr>
+<td>ইলেক্ট্রোলাইট</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>সবকটি স্বাভাবিক</td>
+</tr>
+<tr>
+<td>থাইরয়েড</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>সবকটি স্বাভাবিক</td>
+</tr>
+</tbody>
+</table>
+<h2>ব্যক্তিগত স্বাস্থ্য পরামর্শ</h2>
+<h3>ডায়াবেটিস</h3>
+<p><strong>গ্লাইকোসাইলেটেড হিমোগ্লোবিন (এইচবিএ১সি):</strong> 5.9 % — সীমারেখায়</p>
+<p>আপনার রক্তে গ্লুকোজ/চিনির পরিমাণ পরীক্ষা করার জন্য এই প্যানেলটি ব্যবহার করা হয়। রক্তে গ্লুকোজের মাত্রা খুব বেশি হলে তা ডায়াবেটিসের লক্ষণ হতে পারে।</p>
+<h3>যকৃত</h3>
+<p><strong>গামা গ্লুটামাইল ট্রান্সফেরেজ (জিজিটি):</strong> 11.2 U/L — সীমারেখায়</p>
+<p>আপনার যকৃতের অন্যতম প্রধান কাজ হলো প্রোটিন তৈরি করা, যা আপনার রক্তে মিশে থাকে। এটি এমন কিছু এনজাইমও তৈরি করে যা খাবারকে শক্তিতে রূপান্তর করে এবং পুরোনো পেশী ও কোষ পরিষ্কার করতে সাহায্য করে। যখন আপনার যকৃত ক্ষতিগ্রস্ত হয়, তখন এই এনজাইমগুলো রক্তে মিশে যায় এবং রক্ত পরীক্ষায় ধরা পড়ে।</p>
+<h3>হৃদযন্ত্র</h3>
+<p><strong>ট্রাইগ্লিসারাইড:</strong> 198 mg/dL — স্বাভাবিক সীমার বাইরে</p>
+<p>বেশিরভাগ মানুষ মনে করেন যে তাঁরা হৃদরোগ থেকে নিরাপদ, কিন্তু বাস্তবে, হৃদরোগই বিশ্বে মৃত্যুর প্রধান কারণ। হৃদরোগ বিভিন্ন ধরনের হয়ে থাকে। করোনারি ধমনীর সংকীর্ণতা বা প্রতিবন্ধকতা হলো হৃদরোগের সবচেয়ে সাধারণ কারণ; এই ধমনীগুলো হৃৎপিণ্ডে রক্ত সরবরাহ করে। একে করোনারি আর্টারি ডিজিজ বলা হয় এবং এটি সময়ের সাথে সাথে ধীরে ধীরে ঘটে। এটি হার্ট অ্যাটাকের প্রধান কারণ।</p>
+<h3>হৃদযন্ত্র</h3>
+<p><strong>এলডিএল কোলেস্টেরল:</strong> 101.7 mg/dL — সীমারেখায়</p>
+<p>বেশিরভাগ মানুষ মনে করেন যে তাঁরা হৃদরোগ থেকে নিরাপদ, কিন্তু বাস্তবে, হৃদরোগই বিশ্বে মৃত্যুর প্রধান কারণ। হৃদরোগ বিভিন্ন ধরনের হয়ে থাকে। করোনারি ধমনী সরু হয়ে যাওয়া বা তাতে প্রতিবন্ধকতা সৃষ্টি হওয়া হৃদরোগের সবচেয়ে সাধারণ কারণ। এই ধমনীগুলো হৃৎপিণ্ডে রক্ত সরবরাহ করে। একে করোনারি আর্টারি ডিজিজ বলা হয় এবং এটি সময়ের সাথে সাথে ধীরে ধীরে ঘটে। এটি হার্ট অ্যাটাকের প্রধান কারণ।</p>
+<h3>ভিটামিন</h3>
+<p><strong>ভিটামিন ডি২৫-হাইড্রক্সি:</strong> 17.7 ng/mL — স্বাভাবিক সীমার বাইরে</p>
+<p>ভিটামিনকে অত্যাবশ্যকীয় পুষ্টি উপাদান হিসেবে গণ্য করা হয়, কারণ এগুলো আপনার শরীরে শত শত ভূমিকা পালন করে। এগুলো হাড়কে মজবুত রাখতে, ক্ষত নিরাময়ে এবং রোগ প্রতিরোধ ব্যবস্থাকে শক্তিশালী করতে সাহায্য করে। এছাড়াও, এগুলো খাদ্যকে শক্তিতে রূপান্তরিত করে এবং কোষের ক্ষতি মেরামত করে।</p>
+<h2>এআই-উত্পন্ন সারাংশ</h2>
+<h3>সামগ্রিক মূল্যায়ন</h3>
+<p>আপনার সামগ্রিক স্বাস্থ্য স্কোর ১০০-এর মধ্যে ৭৮, যার অর্থ আপনার শরীর বেশিরভাগ ক্ষেত্রেই ভালোভাবে কাজ করছে। তবে, আপনার কয়েকটি পরীক্ষার ফলাফল স্বাভাবিকের চেয়ে সামান্য বেশি বা কম, যা সামলাতে আপনার ডাক্তার আপনাকে সাহায্য করতে পারেন। এই সমস্যাগুলোর বেশিরভাগই সাধারণ এবং জীবনযাত্রায় সাধারণ কিছু পরিবর্তনের মাধ্যমেই প্রায়শই এর উন্নতি করা সম্ভব।</p>
+<h3>গুরুত্বপূর্ণ পর্যবেক্ষণ</h3>
+<ul>
+<li>আপনার ভিটামিন ডি-এর মাত্রা বেশ কম (১৭.৭ ন্যানোগ্রাম/মিলিলিটার), যার অর্থ আপনার শরীর পর্যাপ্ত ভিটামিন ডি পাচ্ছে না। এর ফলে আপনি ক্লান্ত বোধ করতে পারেন, হাড়ে ব্যথা হতে পারে, অথবা সময়ের সাথে সাথে আপনার হাড় দুর্বল হয়ে যেতে পারে।</li>
+<li>আপনার রক্তে চর্বির মাত্রা (ট্রাইগ্লিসারাইড এবং ভিএলডিএল কোলেস্টেরল) স্বাভাবিকের চেয়ে বেশি, যার অর্থ আপনার রক্তে অতিরিক্ত চর্বি রয়েছে। এর সঠিক ব্যবস্থাপনা না করা হলে এটি আপনার হৃৎপিণ্ডের উপর অতিরিক্ত চাপ সৃষ্টি করতে পারে।</li>
+<li>আপনার HbA১c-এর মাত্রা (৫.৯%) স্বাভাবিকের চেয়ে সামান্য বেশি, যার অর্থ আপনার রক্তে শর্করার পরিমাণ কিছুটা বেশি। এর যত্ন না নিলে এটি শর্করা-সম্পর্কিত সমস্যার (প্রিডায়াবেটিস) একটি প্রাথমিক সতর্ক সংকেত হতে পারে।</li>
+<li>আপনার বেসোফিলের সংখ্যা (এক প্রকার শ্বেত রক্তকণিকা যা সংক্রমণ প্রতিরোধে সাহায্য করে) খুব কম। এমনটা মাঝে মাঝে হতে পারে, তবে আপনার ডাক্তারকে দিয়ে এটি পরীক্ষা করানো উচিত।</li>
+<li>আপনার নন-এইচডিএল কোলেস্টেরল (আপনার রক্তের 'খারাপ' কোলেস্টেরল) স্বাভাবিক মাত্রার চেয়ে সামান্য বেশি, যা আপনার হৃদপিণ্ডের জন্য ভালো নয়।</li>
+</ul>
+<h3>ইতিবাচক দিক</h3>
+<ul>
+<li>আপনার স্বাস্থ্য স্কোর ৭৮/১০০ 'ভালো' সীমার মধ্যে আছে, যার অর্থ আপনার শরীরের বেশিরভাগ অঙ্গপ্রত্যঙ্গ সঠিকভাবে কাজ করছে।</li>
+<li>আপনার রক্তে শর্করার মাত্রা সামান্য বাড়লেও তা স্বাভাবিকের কাছাকাছিই রয়েছে এবং সতর্কতার সাথে তা নিয়ন্ত্রণ করা সম্ভব।</li>
+<li>আপনার অন্যান্য অনেক পরীক্ষার ফলাফলে কোনো অস্বাভাবিকতা দেখা যায়নি, যার অর্থ আপনার লিভার, কিডনি এবং অন্যান্য অঙ্গপ্রত্যঙ্গ সুস্থ সীমার মধ্যে কাজ করছে।</li>
+</ul>
+<h3>করণীয় পরামর্শ</h3>
+<ul>
+<li>প্রতিদিন সকালে প্রায় ১৫-২০ মিনিট সূর্যের আলোতে থাকার চেষ্টা করুন, কারণ সূর্যের আলো আপনার শরীরকে প্রাকৃতিকভাবে ভিটামিন ডি তৈরি করতে সাহায্য করে। মাছ, ডিম এবং দুধের মতো খাবার খাওয়াও এক্ষেত্রে সহায়ক হতে পারে।</li>
+<li>তেলযুক্ত, ভাজা এবং মিষ্টি খাবার খাওয়া কমিয়ে দিন। আপনার রক্তে চর্বি ও শর্করার মাত্রা নিয়ন্ত্রণে রাখতে প্রতিদিনের খাবারে আরও বেশি করে তাজা শাকসবজি, ফল, শস্যদানা এবং ডাল রাখুন।</li>
+<li>প্রতিদিন অন্তত ৩০ মিনিট হাঁটুন অথবা সাইকেল চালানো, কৃষিকাজ বা যোগব্যায়ামের মতো হালকা শারীরিক কাজ করুন। নিয়মিত শরীরচর্চা খারাপ কোলেস্টেরল ও রক্তে শর্করার মাত্রা কমাতে সাহায্য করে।</li>
+<li>শরীরকে সুস্থ রাখতে মদ্যপান সীমিত করুন, ধূমপান (যদি করেন) তা বন্ধ করুন এবং সারাদিন পর্যাপ্ত পরিমাণে পানি পান করুন।</li>
+<li>এই পরীক্ষার ফলাফলগুলো নিয়ে আলোচনা করতে অনুগ্রহ করে শীঘ্রই আপনার ডাক্তারের সাথে দেখা করুন। সবকিছু ঠিক আছে কিনা তা নিশ্চিত করার জন্য আপনার ডাক্তার ভিটামিন ডি সাপ্লিমেন্ট অথবা আরও কিছু পরীক্ষার পরামর্শ দিতে পারেন।</li>
+</ul>
+<hr />
+<p><em>এই সারাংশ শুধুমাত্র তথ্যগত সহায়তার জন্য একটি এআই সিস্টেম দ্বারা তৈরি। চিকিৎসা পরামর্শ, রোগ নির্ণয় বা চিকিৎসার জন্য দয়া করে একজন যোগ্যতাসম্পন্ন স্বাস্থ্যসেবা পেশাদারের সাথে পরামর্শ করুন।</em></p>
+</body>
+</html>
