@@ -1,5 +1,8 @@
 [] chatbot planning
 [] possible endpoint integration
+[] healthscore meter illustration
+[] report of the new architecture
+[] looping of chatbot ai for clarification
 
 
 CURRENT PIPELINES-
